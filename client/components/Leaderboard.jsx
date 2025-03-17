@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-mixed-operators */
 /* eslint-disable no-use-before-define */
@@ -63,15 +64,11 @@ const Leaderboard = () => {
             </thead>
             <tbody>
               {leaderboard.map((entry, index) => (
-                <tr key={(entry.userId ? entry.userId : index) + '-' + entry.id}>
+                <tr key={entry.userId + '-' + entry.id}>
                   <td>{index + 1}</td>
                   <td>
                     <Image
-                      src={
-                        entry.User && entry.User.avatar
-                          ? entry.User.avatar
-                          : '/avatars/avatar1.jpg'
-                      }
+                      src={entry.User.avatar}
                       alt='User Avatar'
                       roundedCircle
                       width={40}
@@ -79,7 +76,7 @@ const Leaderboard = () => {
                     />
                   </td>
                   <td>
-                    {entry.User?.nameFirst} {entry.User?.nameLast || 'Unknown'}
+                    {entry.User.nameFirst} {entry.User.nameLast}
                   </td>
                   <td>{entry.score}</td>
                 </tr>
